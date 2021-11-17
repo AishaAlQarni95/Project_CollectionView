@@ -9,7 +9,8 @@ import UIKit
 
 class CollectionViewCell: UICollectionViewCell {
     
-    @IBOutlet weak var ellipsisImage: UIImageView!
+    
+    @IBOutlet weak var button: UIButton!
     
     @IBOutlet weak var cell_image: UIImageView!
     

@@ -7,21 +7,7 @@
 
 import UIKit
 
-class ViewController: UIViewController, UICollectionViewDelegate,UICollectionViewDataSource {
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        arrayOfCells.count
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! CollectionViewCell
-        cell.cell_image.image = arrayOfCells[indexPath.row].photo
-        cell.cell_title.text = arrayOfCells[indexPath.row].title
-        cell.cell_text.text = arrayOfCells[indexPath.row].text
-        cell.backgroundColor = arrayOfCells[indexPath.row].bgColor
-        cell.layer.cornerRadius = 20
-        return cell
-    }
-    
+class ViewController: UIViewController, UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout{
     
     @IBOutlet weak var collectionView: UICollectionView!
     
@@ -52,3 +38,22 @@ class ViewController: UIViewController, UICollectionViewDelegate,UICollectionVie
     
 }
 
+extension ViewController {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        arrayOfCells.count
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! CollectionViewCell
+        cell.cell_image.image = arrayOfCells[indexPath.row].photo
+        cell.cell_title.text = arrayOfCells[indexPath.row].title
+        cell.cell_text.text = arrayOfCells[indexPath.row].text
+        cell.backgroundColor = arrayOfCells[indexPath.row].bgColor
+        cell.layer.cornerRadius = 20
+        return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return CGSize(width: 180, height: 130)
+    }
+}
